@@ -2,9 +2,7 @@ import urllib
 import re, os
 from HTMLParser import HTMLParser
 
-url = 'http://jcip.net.s3-website-us-east-1.amazonaws.com/'
-source = urllib.urlopen('http://jcip.net.s3-website-us-east-1.amazonaws.com/listings.html')
-page = source.readlines();
+#download all java source code from http://jcip.net.s3-website-us-east-1.amazonaws.com/listings.html
 
 class myhtmlparser(HTMLParser):
     def __init__(self):
@@ -25,8 +23,13 @@ class myhtmlparser(HTMLParser):
     def cleanData(self):
     	self.newdata = []
 
-parser = myhtmlparser()
+# final parameters
 path = '/tmp/JavaMulThread/'
+url = 'http://jcip.net.s3-website-us-east-1.amazonaws.com/'
+source = urllib.urlopen('http://jcip.net.s3-website-us-east-1.amazonaws.com/listings.html')
+
+page = source.readlines();
+parser = myhtmlparser()
 folderpath = ""
 for line in page:
 	if "puzzletitletoc" in line:
